@@ -1,0 +1,61 @@
+
+package com.example.Ecommerce;
+import java.util.Scanner;
+public class TripBudgetPlanner {
+
+	
+		
+		
+
+
+		    public static void main(String[] args) {
+
+		        Scanner sc = new Scanner(System.in);
+
+		        double transport, hotel, food, sightseeing, misc;
+		        double totalBudget, userBudget;
+
+		        System.out.println("===== Trip Budget Planner =====");
+
+		        System.out.print("Enter your planned budget: ₹");
+		        userBudget = sc.nextDouble();
+
+		        System.out.print("Enter transport cost: ₹");
+		        transport = sc.nextDouble();
+
+		        System.out.print("Enter hotel cost: ₹");
+		        hotel = sc.nextDouble();
+
+		        System.out.print("Enter food cost: ₹");
+		        food = sc.nextDouble();
+
+		        System.out.print("Enter sightseeing cost: ₹");
+		        sightseeing = sc.nextDouble();
+
+		        System.out.print("Enter miscellaneous cost: ₹");
+		        misc = sc.nextDouble();
+
+		        totalBudget = transport + hotel + food + sightseeing + misc;
+
+		        System.out.println("\n----- Budget Summary -----");
+		        System.out.println("Transport: ₹" + transport);
+		        System.out.println("Hotel: ₹" + hotel);
+		        System.out.println("Food: ₹" + food);
+		        System.out.println("Sightseeing: ₹" + sightseeing);
+		        System.out.println("Miscellaneous: ₹" + misc);
+
+		        System.out.println("---------------------------");
+		        System.out.println("Total Trip Cost: ₹" + totalBudget);
+
+		        if (totalBudget <= userBudget) {
+		            System.out.println("✅ You are within your budget!");
+		            System.out.println("Remaining Amount: ₹" + (userBudget - totalBudget));
+		        } else {
+		            System.out.println("❌ Budget exceeded!");
+		            System.out.println("Extra Amount Needed: ₹" + (totalBudget - userBudget));
+		        }
+
+		        System.out.println("\nThank you for using Trip Budget Planner 😊");
+		        sc.close();
+		    }
+		}
