@@ -1,0 +1,87 @@
+package com.example.Ecommerce;
+
+
+	import java.util.Scanner;
+
+	public class HotelChatBot {
+
+	    public static void main(String[] args) {
+
+	        Scanner sc = new Scanner(System.in);
+
+	        String userName;
+	        int choice;
+	        int nights;
+	        double pricePerNight = 2000;
+	        double totalCost;
+
+	        System.out.println("🤖 Hello! I am HotelBot");
+	        System.out.print("Please enter your name: ");
+	        userName = sc.nextLine();
+
+	        System.out.println("\nWelcome, " + userName + "!");
+	        System.out.println("How can I help you today?");
+
+	        do {
+	            System.out.println("\n===== HOTEL CHATBOT MENU =====");
+	            System.out.println("1. View Hotel Details");
+	            System.out.println("2. Check Room Price");
+	            System.out.println("3. Book a Room");
+	            System.out.println("4. Chat with Bot");
+	            System.out.println("0. Exit");
+	            System.out.print("Enter your choice: ");
+	            choice = sc.nextInt();
+
+	            switch (choice) {
+
+	                case 1:
+	                    System.out.println("\n🏨 Hotel Name: Sunshine Hotel");
+	                    System.out.println("Location: City Center");
+	                    System.out.println("Facilities: Free WiFi, AC Rooms, Restaurant");
+	                    break;
+
+	                case 2:
+	                    System.out.println("\n💰 Room Price per Night: ₹" + pricePerNight);
+	                    break;
+
+	                case 3:
+	                    System.out.print("\nEnter number of nights: ");
+	                    nights = sc.nextInt();
+	                    totalCost = nights * pricePerNight;
+
+	                    System.out.println("\n✅ Booking Successful!");
+	                    System.out.println("Nights: " + nights);
+	                    System.out.println("Total Cost: ₹" + totalCost);
+	                    break;
+
+	                case 4:
+	                    sc.nextLine(); // clear buffer
+	                    System.out.print("\nYou: ");
+	                    String msg = sc.nextLine().toLowerCase();
+
+	                    if (msg.contains("hello") || msg.contains("hi")) {
+	                        System.out.println("Bot: Hello! How can I assist you?");
+	                    } else if (msg.contains("price")) {
+	                        System.out.println("Bot: Room price is ₹" + pricePerNight + " per night.");
+	                    } else if (msg.contains("book")) {
+	                        System.out.println("Bot: Please choose option 3 to book a room.");
+	                    } else if (msg.contains("bye")) {
+	                        System.out.println("Bot: Goodbye! Have a nice day 😊");
+	                    } else {
+	                        System.out.println("Bot: Sorry, I didn't understand that.");
+	                    }
+	                    break;
+
+	                case 0:
+	                    System.out.println("\nThank you for using HotelBot. Goodbye! 👋");
+	                    break;
+
+	                default:
+	                    System.out.println("❌ Invalid choice!");
+	            }
+
+	        } while (choice != 0);
+
+	        sc.close();
+	    }
+	}
