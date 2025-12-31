@@ -1,0 +1,40 @@
+CREATE DATABASE food_order_system;
+CREATE TABLE food (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    price DECIMAL(10,2)
+);
+INSERT INTO food VALUES
+(1, 'Pizza', 150),
+(2, 'Burger', 80),
+(3, 'Pasta', 120),
+(4, 'French Fries', 60);
+CREATE TABLE cart (
+    cart_id INT AUTO_INCREMENT PRIMARY KEY
+);
+CREATE TABLE cart_items (
+    cart_id INT,
+    food_id INT,
+    FOREIGN KEY (cart_id) REFERENCES cart(cart_id),
+    FOREIGN KEY (food_id) REFERENCES food(id)
+);
+SELECT * FROM food;
+INSERT INTO cart VALUES ();
+INSERT INTO cart_items (cart_id, food_id)
+VALUES (@cart_id, 1); -- 1 = Pizza
+SELECT f.name, f.price
+FROM cart_items c
+JOIN food f ON c.food_id = f.id
+WHERE c.cart_id = @cart_id;
+SELECT SUM(f.price) AS total_bill
+FROM cart_items c
+JOIN food f ON c.food_id = f.id
+WHERE c.cart_id = @cart_id;
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    cart_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cart_id) REFERENCES cart(cart_id)
+);
+INSERT INTO orders (cart_id)
+VALUES (@cart_id);
